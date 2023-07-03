@@ -1,0 +1,78 @@
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+    {% bootstrap_css %}
+    <style>
+        .titulo{
+          background-color: #286150;
+          border-radius: 20px;
+          padding: 10px;
+          font-family: arial;
+        }
+        h1{
+          color:white;
+          font-size: xxx-large;
+        }
+    </style>
+    <body>
+    {% if productos %}
+    <div class="titulo" align="center">
+        <h1>Productos</h1>
+    </div>
+    {% block content %}
+    <div align="center">
+        <div style="width: 70%;"> 
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">
+                  #
+                </th>
+                <th scope="col">
+                  Nombre
+                </th>
+                <th scope="col">
+                  Descripción
+                </th>
+                <th scope="col">
+                  Precio
+                </th>
+                <th scope="col">
+                  Registro
+                </th>
+                <th scope="col">
+                  Estatus
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for producto in productos %}
+              <tr>
+                <td scope="row">
+                  {{producto.pk}}
+                </td>
+                {% for atributo in producto.getAtributos%}
+                <td>
+                  {{ atributo.0 }}
+                </td>
+                {% endfor %}
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    {% endblock %}
+    {% else %}
+    <div class="empty-message">
+        La base de datos esta vacía
+    </div>
+    {% endif %}
+    
+    
+    
+</body>
+</html>

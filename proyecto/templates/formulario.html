@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+<html>
+<body>
+    <style>
+        .titulo{
+          background-color: #286150;
+          border-radius: 20px;
+          padding: 10px;
+          font-family: arial;
+        }
+        h1{
+          color:white;
+          font-size: xxx-large;
+        }
+      </style>
+
+    <div class="title">
+        Productos
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for={{ form.nombre.id_for_label }}>Nombre</label>
+            {{ form.nombre|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for={{ form.descripcion.id_for_label }}>Nombre</label>
+            {{ form.descripcion|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for={{ form.precio.id_for_label }}>Nombre</label>
+            {{ form.precio|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for={{ form.registro.id_for_label }}>Nombre</label>
+            {{ form.registro|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for={{ form.estatus.id_for_label }}>Nombre</label>
+            {{ form.estatus|add_class:"form-control" }}
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+
+</body>
+</html>
